@@ -60,6 +60,22 @@ def main():
                 continue
 
             # perform action
+            if choice == "2":
+                try:
+                    amount = float(input("Amount to deposit: $").strip())
+                    acc.deposit(amount)
+                    print(f"New Balance: ${acc.balance:.2f}")
+                except ValueError as e:
+                    print(f"Error: {e}")
+
+            elif choice == "3":
+                continue
+
+            elif choice == "4":
+                continue
+
+            else:
+                continue
         
         elif choice == "6":
             if not accounts:
