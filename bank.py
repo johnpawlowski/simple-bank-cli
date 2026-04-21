@@ -4,3 +4,6 @@ class BankAccount:
         self.owner = owner
         self.balance = balance
         self.transactions = []
+
+    def __repr__(self):
+        pass
