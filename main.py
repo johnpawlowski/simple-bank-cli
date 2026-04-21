@@ -15,13 +15,9 @@ def select_account(accounts):
 
 
 def main():
-    # create empty accounts list
     accounts = []
     
-    # start main loop
     while True:
-    
-        # display menu options
         print("\n----- Bank CLI -----")
         print(" 1. Create a New Account")
         print(" 2. Make a Deposit")
@@ -31,37 +27,26 @@ def main():
         print(" 6. List all Accounts")
         print(" 7. Quit")
         
-        # get user input
         choice = input("Choice: ").strip()
         
-        # if create account
         if choice == "1":
-            # get owner name and balance
             owner = str(input("Account Owner Name: ".strip()))
             try:
                 balance = float(input("Account Balance: "))
-            # create BankAccount instance
                 acc = BankAccount(owner,balance)
-            # append to accounts list
                 accounts.append(acc)
                 print(f"Created: {acc}")
             except ValueError as e:
                 print(f"Error: {e}")
         
-        # if deposit/withdraw/transfer/history
         elif choice in ("2", "3", "4", "5"):
-            # check if accounts exist
             if not accounts:
                 print("No accounts exist yet.")
                 continue
-            # select account
             acc = select_account(accounts)
             if acc is None:
                 continue
 
-            # perform action
-
-            #deposit
             if choice == "2":
                 try:
                     amount = float(input("Amount to deposit: $").strip())
@@ -70,7 +55,6 @@ def main():
                 except ValueError as e:
                     print(f"Error: {e}")
             
-            #withdraw
             elif choice == "3":
                 try:
                     amount = float(input("Amount to withdrawal: $").strip())
@@ -79,7 +63,6 @@ def main():
                 except ValueError as e:
                     print(f"Error: {e}")
 
-            #transfer
             elif choice == "4":
                 if len(accounts) < 2:
                     print("Need at least 2 accounts for a transfer.")
@@ -111,14 +94,13 @@ def main():
                 for i, acc in enumerate(accounts):
                     print(f" {f'{i + 1}. {acc.owner}':<20} ${acc.balance:.2f}")
 
-        # if quit
         elif choice == "7":
-            # exit loop
             print("Goodbye")
             break
 
         else:
             print("Invalid selection. Please choose 1-7")
+
 
 if __name__ == "__main__":
     main()
