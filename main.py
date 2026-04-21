@@ -97,7 +97,12 @@ def main():
                     print(f"Error: {e}")
 
             elif choice == "5":
-                continue
+                history = acc.get_history()
+                if not history:
+                    print("There are no transactions yet.")
+                else:
+                    for transaction in history:
+                        print(f" {transaction['type']:<20} ${transaction['amount']:.2f}")
         
         elif choice == "6":
             if not accounts:
