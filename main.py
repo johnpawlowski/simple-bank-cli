@@ -69,7 +69,12 @@ def main():
                     print(f"Error: {e}")
 
             elif choice == "3":
-                continue
+                try:
+                    amount = float(input("Amount to withdrawal: $").strip())
+                    acc.withdraw(amount)
+                    print(f"New Balance: ${acc.balance:.2f}")
+                except ValueError as e:
+                    print(f"Error: {e}")
 
             elif choice == "4":
                 continue
