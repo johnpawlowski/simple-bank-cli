@@ -60,6 +60,8 @@ def main():
                 continue
 
             # perform action
+
+            #deposit
             if choice == "2":
                 try:
                     amount = float(input("Amount to deposit: $").strip())
@@ -67,7 +69,8 @@ def main():
                     print(f"New Balance: ${acc.balance:.2f}")
                 except ValueError as e:
                     print(f"Error: {e}")
-
+            
+            #withdraw
             elif choice == "3":
                 try:
                     amount = float(input("Amount to withdrawal: $").strip())
@@ -76,10 +79,24 @@ def main():
                 except ValueError as e:
                     print(f"Error: {e}")
 
+            #transfer
             elif choice == "4":
-                continue
+                if len(accounts) < 2:
+                    print("Need at least 2 accounts for a transfer.")
+                    continue
+                print("Transfer to: ")
+                targets = [a for a in accounts if a is not acc]
+                target = select_account(targets)
+                if target is None:
+                    continue
+                try:
+                    amount = float(input("Amount to transfer: $").strip())
+                    acc.transfer(amount,target)
+                    print(f"You transferred ${amount:.2f} to {target.owner}. Your balance is now ${acc.balance:.2f}")
+                except ValueError as e:
+                    print(f"Error: {e}")
 
-            else:
+            elif choice == "5":
                 continue
         
         elif choice == "6":
