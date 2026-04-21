@@ -25,8 +25,16 @@ class BankAccount:
         if amount > self.balance:
             raise ValueError("Insufficient funds.")
         self.balance -= amount
-        self.transactions.append({"type": "withdrawal", "amount": amount})
+        self.transactions.append({"type": "withdrawal", "amount": -amount})
         return self.balance
     
     def transfer(self, amount, target_account):
-        pass
+        if amount <= 0:
+            raise ValueError("Transfer amount must be positive.")
+        if amount > self.balance:
+            raise ValueError("Insufficient funds.")
+        self.balance -= amount
+        self.transactions.append({"type": "transfer", "amount": -amount})
+        target_account.balance += amount
+        target_account.transactions.append({"type": "transfer", "amount": amount})
+        return self.balance
