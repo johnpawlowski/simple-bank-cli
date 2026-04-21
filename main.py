@@ -18,6 +18,7 @@ def main():
         print(" 7. Quit")
         
         # get user input
+        choice = input("Choice: ").strip()
         
         # if create account
             # get owner name and balance
