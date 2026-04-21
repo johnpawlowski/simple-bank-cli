@@ -38,3 +38,6 @@ class BankAccount:
         target_account.balance += amount
         target_account.transactions.append({"type": "transfer", "amount": amount})
         return self.balance
+    
+    def get_history(self):
+        return self.transactions
