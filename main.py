@@ -1,27 +1,36 @@
 from bank import BankAccount
 
 def main():
-    #start with empty accounts list
-
-    #print the list of options
-    ##-----Bank CLI-----
-    ## 1. Create new account
-    ## 2. Make a deposit
-    ## 3. Make a withdrawal
-    ## 4. Make a transfer
-    ## 5. View account transaction history
-    ## 6. List accounts
-    ## 7. Exit
-
-    #capture the user choice
-
-    #conditional logic
-    ##if 1
-    ##elif (2,3,4,5)
-    ##elif 6
-    ##else:
-    ##    exit()
-    return
+    # create empty accounts list
+    accounts = []
+    
+    # start main loop
+    while True:
+    
+        # display menu options
+        print("\n----- Bank CLI -----")
+        print(" 1. Create a New Account")
+        print(" 2. Make a Deposit")
+        print(" 3. Make a Withdrawal")
+        print(" 4. Make a Transfer")
+        print(" 5. Show Account Transaction History")
+        print(" 6. List all Accounts")
+        print(" 7. Quit")
+        
+        # get user input
+        
+        # if create account
+            # get owner name and balance
+            # create BankAccount instance
+            # append to accounts list
+        
+        # if deposit/withdraw/transfer/history
+            # check if accounts exist
+            # select account
+            # perform action
+        
+        # if quit
+            # exit loop
 
 if __name__ == "__main":
     main()
