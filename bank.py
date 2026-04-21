@@ -10,4 +10,4 @@ class BankAccount:
         return f"{class_name}(owner={self.owner}, balance={self.balance})"
     
     def __str__(self):
-        pass
+        return f"The bank account for {self.owner} has a balance of ${self.balance}."
