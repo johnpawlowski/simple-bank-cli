@@ -1,5 +1,19 @@
 from bank import BankAccount
 
+
+def select_account(accounts):
+    for i, acc in enumerate(accounts):
+        print(f" {f'{i + 1}. {acc.owner}':<20} ${acc.balance:.2f}")
+    try:
+        index = int(input("Select account (number): ").strip()) - 1
+        if 0 <= index < len(accounts):
+            return accounts[index]
+        print("Invalid selection.")
+    except ValueError:
+        print("Please enter an integer.")
+    return None
+
+
 def main():
     # create empty accounts list
     accounts = []
