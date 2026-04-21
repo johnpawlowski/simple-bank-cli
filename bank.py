@@ -27,3 +27,6 @@ class BankAccount:
         self.balance -= amount
         self.transactions.append({"type": "withdrawal", "amount": amount})
         return self.balance
+    
+    def transfer(self, amount, target_account):
+        pass
