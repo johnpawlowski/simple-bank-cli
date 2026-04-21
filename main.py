@@ -62,7 +62,11 @@ def main():
             # perform action
         
         elif choice == "6":
-            continue
+            if not accounts:
+                print("No accounts exist yet.")
+            else:
+                for i, acc in enumerate(accounts):
+                    print(f" {f'{i + 1}. {acc.owner}':<20} ${acc.balance:.2f}")
 
         # if quit
         elif choice == "7":
