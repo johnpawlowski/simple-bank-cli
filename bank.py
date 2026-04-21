@@ -14,6 +14,16 @@ class BankAccount:
     
     def deposit(self, amount):
         if amount <= 0:
-            raise ValueError("Depost amount must be positive.")
+            raise ValueError("Deposit amount must be positive.")
         self.balance += amount
         self.transactions.append({"type": "deposit", "amount": amount})
+        return self.balance
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            raise ValueError("Withdrawal amount must be positive.")
+        if amount > self.balance:
+            raise ValueError("Insufficient funds.")
+        self.balance -= amount
+        self.transactions.append({"type": "withdrawal", "amount": amount})
+        return self.balance
