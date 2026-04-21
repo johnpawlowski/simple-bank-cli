@@ -6,4 +6,5 @@ class BankAccount:
         self.transactions = []
 
     def __repr__(self):
-        pass
+        class_name = type(self).__name__
+        return f"{class_name}(owner={self.owner},balance={self.balance})"
