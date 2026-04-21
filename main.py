@@ -37,9 +37,15 @@ def main():
         # if deposit/withdraw/transfer/history
         elif choice in ("2", "3", "4", "5"):
             # check if accounts exist
+            if not accounts:
+                print("No accounts exist yet.")
+                continue
             # select account
+            acc = select_account(accounts)
+            if acc is None:
+                continue
+
             # perform action
-            continue
         
         elif choice == "6":
             continue
