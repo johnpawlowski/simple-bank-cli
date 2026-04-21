@@ -11,3 +11,9 @@ class BankAccount:
     
     def __str__(self):
         return f"The bank account for {self.owner} has a balance of ${self.balance}."
+    
+    def deposit(self, amount):
+        if amount <= 0:
+            raise ValueError("Depost amount must be positive.")
+        self.balance += amount
+        self.transactions.append({"type": "deposit", "amount": amount})
