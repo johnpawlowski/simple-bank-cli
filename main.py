@@ -1,4 +1,5 @@
 from bank import BankAccount
+import json
 
 
 def select_account(accounts):
@@ -12,6 +13,13 @@ def select_account(accounts):
     except ValueError:
         print("Please enter an integer.")
     return None
+
+
+def save(accounts):
+    save_state = [{"owner": acc.owner, "balance": acc.balance, "transactions": acc.transactions} for acc in accounts]
+    with open("save_state.json", "w") as f:
+        json.dump(save_state, f, indent=2)
+
 
 
 def main():
@@ -30,7 +38,7 @@ def main():
         choice = input("Choice: ").strip()
         
         if choice == "1":
-            owner = str(input("Account Owner Name: ".strip()))
+            owner = input("Account Owner Name: ").strip()
             try:
                 balance = float(input("Account Balance: "))
                 acc = BankAccount(owner,balance)
