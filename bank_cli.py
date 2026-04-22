@@ -108,16 +108,16 @@ def main():
                 if not history:
                     print("There are no transactions yet.")
                 else:
-                    print(f" {'type':<15} {'to':<15} {'from':<15} {'amount':>15}")
+                    print(f" {'type':<20} {'to':<20} {'from':<20} {'amount':>15}")
                     for transaction in history:
-                        print(f" {transaction['type']:<15} {transaction['to'] or '':<15} {transaction['from'] or '':<15} ${transaction['amount']:>15.2f}")
+                        print(f" {transaction['type']:<20} {transaction['to'] or '':<20} {transaction['from'] or '':<20} ${transaction['amount']:>14.2f}")
         
         elif choice == "6":
             if not accounts:
                 print("No accounts exist yet.")
             else:
                 for i, acc in enumerate(accounts):
-                    print(f" {f'{i + 1}. {acc.owner}':<15} ${acc.balance:>15.2f}")
+                    print(f" {f'{i + 1}. {acc.owner}':<20} ${acc.balance:>20.2f}")
 
         elif choice == "7":
             print("Goodbye")
