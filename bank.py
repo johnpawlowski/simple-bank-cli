@@ -16,7 +16,7 @@ class BankAccount:
         if amount <= 0:
             raise ValueError("Deposit amount must be positive.")
         self.balance += amount
-        self.transactions.append({"type": "deposit", "amount": amount})
+        self.transactions.append({"type": "deposit", "to": self.owner, "from": None, "amount": amount})
         return self.balance
 
     def withdraw(self, amount):
@@ -25,7 +25,7 @@ class BankAccount:
         if amount > self.balance:
             raise ValueError("Insufficient funds.")
         self.balance -= amount
-        self.transactions.append({"type": "withdrawal", "amount": -amount})
+        self.transactions.append({"type": "withdrawal", "to": None, "from": self.owner,  "amount": -amount})
         return self.balance
     
     def transfer(self, amount, target_account):
@@ -34,9 +34,9 @@ class BankAccount:
         if amount > self.balance:
             raise ValueError("Insufficient funds.")
         self.balance -= amount
-        self.transactions.append({"type": "transfer", "amount": -amount})
+        self.transactions.append({"type": "transfer", "to": target_account.owner, "from": self.owner,  "amount": -amount})
         target_account.balance += amount
-        target_account.transactions.append({"type": "transfer", "amount": amount})
+        target_account.transactions.append({"type": "transfer", "to": target_account.owner, "from": self.owner,  "amount": amount})
         return self.balance
     
     def get_history(self):
