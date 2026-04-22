@@ -39,7 +39,7 @@ def load():
 
 
 def main():
-    accounts = []
+    accounts = load()
     
     while True:
         print("\n----- Bank CLI -----")
