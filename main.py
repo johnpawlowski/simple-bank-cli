@@ -4,7 +4,7 @@ import json
 
 def select_account(accounts):
     for i, acc in enumerate(accounts):
-        print(f" {f'{i + 1}. {acc.owner}':<20} ${acc.balance:.2f}")
+        print(f" {f'{i + 1}. {acc.owner}':<15} ${acc.balance:.2f}")
     try:
         index = int(input("Select account (number): ").strip()) - 1
         if 0 <= index < len(accounts):
@@ -108,15 +108,16 @@ def main():
                 if not history:
                     print("There are no transactions yet.")
                 else:
+                    print(f" {'type':<15} {'to':<15} {'from':<15} {'amount':>15}")
                     for transaction in history:
-                        print(f" {transaction['type']:<20} {transaction['to'] or '---':<20} {transaction['from'] or '---':<20} ${transaction['amount']:>20.2f}")
+                        print(f" {transaction['type']:<15} {transaction['to']:<15} {transaction['from']:<15} ${transaction['amount']:>15.2f}")
         
         elif choice == "6":
             if not accounts:
                 print("No accounts exist yet.")
             else:
                 for i, acc in enumerate(accounts):
-                    print(f" {f'{i + 1}. {acc.owner}':<20} ${acc.balance:.2f}")
+                    print(f" {f'{i + 1}. {acc.owner}':<15} ${acc.balance:>15.2f}")
 
         elif choice == "7":
             print("Goodbye")
