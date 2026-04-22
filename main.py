@@ -109,7 +109,7 @@ def main():
                     print("There are no transactions yet.")
                 else:
                     for transaction in history:
-                        print(f" {transaction['type']:<20} {transaction['to']:<20} {transaction['from']:<20} ${transaction['amount']:>20.2f}")
+                        print(f" {transaction['type']:<20} {transaction['to'] or '---':<20} {transaction['from'] or '---':<20} ${transaction['amount']:>20.2f}")
         
         elif choice == "6":
             if not accounts:
