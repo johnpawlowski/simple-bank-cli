@@ -1,9 +1,9 @@
 class BankAccount:
     
-    def __init__(self, owner, balance):
+    def __init__(self, owner, balance, transactions = None):
         self.owner = owner
         self.balance = balance
-        self.transactions = []
+        self.transactions = transactions if transactions is not None else []
 
     def __repr__(self):
         class_name = type(self).__name__
