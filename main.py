@@ -21,6 +21,22 @@ def save(accounts):
         json.dump(save_state, f, indent=2)
 
 
+def load():
+    accounts = []
+    try:
+        with open("save_state.json", "r") as f:
+            load_state = json.load(f)
+    except FileNotFoundError:
+        return []
+    if not load_state:
+        return []
+    else:
+        for item in load_state:
+            acc = BankAccount(item['owner'], item['balance'], item['transactions'])
+            accounts.append(acc)
+        return accounts
+
+
 
 def main():
     accounts = []
