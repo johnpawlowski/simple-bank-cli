@@ -44,6 +44,7 @@ def main():
                 acc = BankAccount(owner,balance)
                 accounts.append(acc)
                 print(f"Created: {acc}")
+                save(accounts)
             except ValueError as e:
                 print(f"Error: {e}")
         
@@ -60,6 +61,7 @@ def main():
                     amount = float(input("Amount to deposit: $").strip())
                     acc.deposit(amount)
                     print(f"New Balance: ${acc.balance:.2f}")
+                    save(accounts)
                 except ValueError as e:
                     print(f"Error: {e}")
             
@@ -68,6 +70,7 @@ def main():
                     amount = float(input("Amount to withdrawal: $").strip())
                     acc.withdraw(amount)
                     print(f"New Balance: ${acc.balance:.2f}")
+                    save(accounts)
                 except ValueError as e:
                     print(f"Error: {e}")
 
@@ -84,6 +87,7 @@ def main():
                     amount = float(input("Amount to transfer: $").strip())
                     acc.transfer(amount,target)
                     print(f"You transferred ${amount:.2f} to {target.owner}. Your balance is now ${acc.balance:.2f}")
+                    save(accounts)
                 except ValueError as e:
                     print(f"Error: {e}")
 
