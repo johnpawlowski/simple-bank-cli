@@ -31,11 +31,7 @@ def load():
     if not load_state:
         return []
     else:
-        for item in load_state:
-            acc = BankAccount(item['owner'], item['balance'], item['transactions'])
-            accounts.append(acc)
-        return accounts
-
+        return [BankAccount(item['owner'], item['balance'], item['transactions']) for item in load_state]       
 
 
 def main():
