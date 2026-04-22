@@ -110,7 +110,7 @@ def main():
                 else:
                     print(f" {'type':<15} {'to':<15} {'from':<15} {'amount':>15}")
                     for transaction in history:
-                        print(f" {transaction['type']:<15} {transaction['to']:<15} {transaction['from']:<15} ${transaction['amount']:>15.2f}")
+                        print(f" {transaction['type']:<15} {transaction['to'] or '':<15} {transaction['from'] or '':<15} ${transaction['amount']:>15.2f}")
         
         elif choice == "6":
             if not accounts:
