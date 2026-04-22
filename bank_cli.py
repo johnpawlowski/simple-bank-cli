@@ -52,7 +52,7 @@ def main():
         if choice == "1":
             owner = input("Account Owner Name: ").strip()
             try:
-                balance = float(input("Account Balance: "))
+                balance = float(input("Account Balance: $"))
                 acc = BankAccount(owner,balance)
                 accounts.append(acc)
                 print(f"Created: {acc}")

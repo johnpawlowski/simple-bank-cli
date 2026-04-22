@@ -3,14 +3,14 @@ class BankAccount:
     def __init__(self, owner, balance, transactions = None):
         self.owner = owner
         self.balance = balance
-        self.transactions = transactions if transactions is not None else []
+        self.transactions = transactions if transactions is not None else [{"type": "starting balance", "to": None, "from": None, "amount": balance}]
 
     def __repr__(self):
         class_name = type(self).__name__
         return f"{class_name}(owner={self.owner}, balance={self.balance})"
     
     def __str__(self):
-        return f"The bank account for {self.owner} has a balance of ${self.balance}."
+        return f"The bank account for {self.owner} has a balance of ${self.balance:.2f}"
     
     def deposit(self, amount):
         if amount <= 0:
