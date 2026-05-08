@@ -2,7 +2,7 @@ from bank import BankAccount
 import json
 
 
-def select_account(accounts):
+def select_account(accounts: list[BankAccount]) -> BankAccount | None:
     for i, acc in enumerate(accounts):
         print(f" {f'{i + 1}. {acc.owner}':<15} ${acc.balance:.2f}")
     try:
@@ -15,13 +15,13 @@ def select_account(accounts):
     return None
 
 
-def save(accounts):
+def save(accounts: list[BankAccount]) -> None:
     save_state = [{"owner": acc.owner, "balance": acc.balance, "transactions": acc.transactions} for acc in accounts]
     with open("save_state.json", "w") as f:
         json.dump(save_state, f, indent=2)
 
 
-def load():
+def load() -> list[BankAccount]:
     accounts = []
     try:
         with open("save_state.json", "r") as f:
@@ -34,7 +34,7 @@ def load():
         return [BankAccount(item['owner'], item['balance'], item['transactions']) for item in load_state]       
 
 
-def main():
+def main() -> None:
     accounts = load()
     
     while True:

@@ -1,25 +1,28 @@
 class BankAccount:
+    owner: str
+    balance: float
+    transactions: list
     
-    def __init__(self, owner, balance, transactions = None):
+    def __init__(self, owner: str, balance: float, transactions: list | None = None) -> None:
         self.owner = owner
         self.balance = balance
         self.transactions = transactions if transactions is not None else [{"type": "starting balance", "to": None, "from": None, "amount": balance}]
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         class_name = type(self).__name__
         return f"{class_name}(owner={self.owner}, balance={self.balance})"
     
-    def __str__(self):
+    def __str__(self) -> str:
         return f"The bank account for {self.owner} has a balance of ${self.balance:.2f}"
     
-    def deposit(self, amount):
+    def deposit(self, amount: float) -> float:
         if amount <= 0:
             raise ValueError("Deposit amount must be positive.")
         self.balance += amount
         self.transactions.append({"type": "deposit", "to": self.owner, "from": None, "amount": amount})
         return self.balance
 
-    def withdraw(self, amount):
+    def withdraw(self, amount: float) -> float:
         if amount <= 0:
             raise ValueError("Withdrawal amount must be positive.")
         if amount > self.balance:
@@ -28,7 +31,7 @@ class BankAccount:
         self.transactions.append({"type": "withdrawal", "to": None, "from": self.owner,  "amount": -amount})
         return self.balance
     
-    def transfer(self, amount, target_account):
+    def transfer(self, amount: float, target_account: "BankAccount") -> float:
         if amount <= 0:
             raise ValueError("Transfer amount must be positive.")
         if amount > self.balance:
@@ -39,5 +42,5 @@ class BankAccount:
         target_account.transactions.append({"type": "transfer", "to": target_account.owner, "from": self.owner,  "amount": amount})
         return self.balance
     
-    def get_history(self):
+    def get_history(self) -> list:
         return self.transactions
